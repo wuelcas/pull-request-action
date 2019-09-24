@@ -145,6 +145,8 @@ main () {
 
             create_pull_request "${BRANCH}" "${PULL_REQUEST_BRANCH}" "${PULL_REQUEST_BODY}" "${PULL_REQUEST_TITLE}" "${PULL_REQUEST_DRAFT}"
 
+        else
+            echo "Branch prefix did not match. The PR was not created."
         fi
 
     fi
