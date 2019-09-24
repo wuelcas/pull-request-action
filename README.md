@@ -15,13 +15,13 @@ workflow "Create Pull Request" {
 }
 
 action "Create New Pull Request" {
-  uses = "vsoch/pull-request-action@master"
+  uses = "wuelcas/pull-request-action@master"
   secrets = [
     "GITHUB_TOKEN"
   ]
   env = {
-    BRANCH_PREFIX = "update/"
     PULL_REQUEST_BRANCH = "master"
+    REPOSITORY_NAME = "user/repo-name"
   }
 }
 ```
@@ -33,6 +33,7 @@ Environment variables include:
   - **PULL_REQUEST_BODY**: the body for the pull request (optional)
   - **PULL_REQUEST_TITLE**: the title for the pull request  (optional)
   - **PULL_REQUEST_DRAFT**: should the pull request be a draft PR? (optional; unset defaults to `false`)
+  - **REPOSITORY_NAME**: the name of an external repository on which the PR will be created (optional; defaults to the same repository)
 
 ## Example use Case: Update Registry
 

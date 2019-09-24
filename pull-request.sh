@@ -13,9 +13,16 @@ BASE=https://api.github.com
 AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
 HEADER="Accept: application/vnd.github.${API_VERSION}+json"
 HEADER="${HEADER}; application/vnd.github.antiope-preview+json; application/vnd.github.shadow-cat-preview+json"
+if [ -z "${REPOSITORY_NAME}" ]; then
+    echo "No external repository. The PR will be created in the same repo"
+    REPOSITORY=GITHUB_REPOSITORY
+else
+    echo "External repository set. The PR will be created on ${REPOSITORY_NAME}"
+    REPOSITORY=REPOSITORY_NAME
+fi
 
 # URLs
-REPO_URL="${BASE}/repos/${GITHUB_REPOSITORY}"
+REPO_URL="${BASE}/repos/${REPOSITORY}"
 PULLS_URL=$REPO_URL/pulls
 
 ################################################################################
